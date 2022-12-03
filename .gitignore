@@ -1,3 +1,2 @@
 .vscode
-day1/build/*
-day2/build/*
+*/build/*
