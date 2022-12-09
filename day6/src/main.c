@@ -14,27 +14,6 @@
 
 int PAGE_SIZE;
 
-extern int main(void);
-
-int syscall_write(char *msg, int64_t number, char base) {
-  write(1, msg, strlen(msg));
-  char buffer[sizeof(number) * 8];
-  char *p = &buffer[sizeof(number) * 8];
-  int len = -1; 
-  *(--p) = '\n';
-  if (0 < number) {
-    write(1, "-", 1);
-    number *= -1;
-  }
-  do {
-    *(--p) = "0123456789abcdef"[number % base];
-    number /= base;
-    len++;
-  } while (number != 0);
-  write(1, p, len);
-  return 0; 
-}
-
 volatile bool do_exit = false;
 
 static void sigsegv_action(int signo, siginfo_t *info, void *ctx) {
