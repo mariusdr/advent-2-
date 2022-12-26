@@ -16,7 +16,9 @@
 #include <sys/sendfile.h>
 #include <stdint.h>
 
-#define RWBUFLEN 4096
+//#define RWBUFLEN 4096
+#define RWBUFLEN 1024 * 128
+//#define RWBUFLEN 1024 * 512
 
 ssize_t copy_write(int infd, int outfd, int *syscalls) {
   ssize_t rc = 0;
